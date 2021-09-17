@@ -17,16 +17,20 @@ class Board
     wins = [[0, 1, 2], [2, 5, 8], [6, 7, 8], [0, 3, 6], [1, 4, 7][0, 4, 8], [2, 4, 6], [3, 4, 5]]
   end
 
+  def select_play(spaces)
+    spaces % 2 == 0 ? true : false
+  end
+
   def check_location(choice, board)
     board.location[choice] == choice.to_s
   end
 
-  def check_spaces
+  def has_empty_spaces
     result = location.select do |elem|
       elem != 'x' && elem != 'o'
     end
 
-    result.size > 0
+    result.size
   end
 
   def update_board(marker, position)

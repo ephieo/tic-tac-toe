@@ -29,18 +29,23 @@ describe Board do
     expect(board.check_location(choice, board)).to be(false)
   end
 
-  it 'checks whether the player has won' do
-    expect(board.check_wins).to be(true)
-  end
+  # it 'checks whether the player has won' do
+  #   expect(board.check_wins).to be(true)
+  # end
 
   context 'checks for empty spaces on the board' do
     it 'returns true if there are empty spaces on the board' do
       board = Board.new(%w[0 1 2 x 4 5 6 7 8])
-      expect(board.check_spaces).to be(true)
+      expect(board.has_empty_spaces).to be(true)
     end
     it 'returns false if there are no empty spaces on the board' do
       board = Board.new(%w[x o x x o x x o o])
-      expect(board.check_spaces).to be(false)
+      expect(board.has_empty_spaces).to be(false)
     end
+  end
+
+  it 'chooses which player plays next' do
+    expect(game.select_play(spaces)).to be(true)
+    expect(game.select_play(spaces)).to be(false)
   end
 end
