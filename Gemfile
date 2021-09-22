@@ -1,3 +1,9 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "rspec"
+gem 'rspec'
+
+group :development, :test do
+  gem 'rubocop', require: false
+end
+#  which rubocop
+# ~/.rbenv/shims/rubocop
