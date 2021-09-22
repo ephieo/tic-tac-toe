@@ -6,8 +6,7 @@ describe Game do
   # let(:game) {Game.new}
   subject(:game) { described_class.new }
 
-  # it 'chooses which player plays next' do
-  #  expect(game.select_play(spaces)).to be(true)
-  #  expect(game.select_play(spaces)).to be(false)
-  # end
+  it 'returns an instance of the board class' do
+    expect(game.setup_game).to be_a(Board)
+  end
 end

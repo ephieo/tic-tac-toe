@@ -18,7 +18,7 @@ class Board
   end
 
   def select_play(spaces)
-    spaces % 2 == 0 ? true : false
+    spaces.even? ? true : false
   end
 
   def check_location(choice, board)
