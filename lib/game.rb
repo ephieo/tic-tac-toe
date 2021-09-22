@@ -32,3 +32,4 @@ class Game
   end
 end
 
+#random 
