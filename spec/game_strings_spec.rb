@@ -1,4 +1,6 @@
 require 'rspec'
+require 'simplecov'
+SimpleCov.start
 require_relative './../lib/game_strings'
 
 describe Game_strings do

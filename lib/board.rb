@@ -1,10 +1,9 @@
 class Board
-  attr_reader :location, :play_count
+  attr_reader :location
 
   # attr_accessor :location, :marker, :position
   def initialize(location)
     @location = location
-    @play_count = 0
   end
 
   def show_board
