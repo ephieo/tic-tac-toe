@@ -11,7 +11,7 @@ class Game
   end
 
 
-  def start_game
+  def start_game(board)
     board = setup_game
     play_game(board)
   end
@@ -22,12 +22,16 @@ class Game
   
   private
 
+  def validate_input(input)
+    input < 0 || input > 8 ? false : true
+  end
 
   def play_game(board)
     str = Game_strings.new() 
     io = Input_output.new()
     board.show_board
     while board.has_empty_spaces > 0
+      
       io.print(str.take_location_string)
       choice = gets.chomp.to_i
       marker = board.select_play(board.has_empty_spaces) ? 'x' : 'o'
