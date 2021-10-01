@@ -3,7 +3,7 @@ require 'simplecov'
 SimpleCov.start
 require_relative '../lib/input_output'
 
-describe Input_output do
+describe InputOutput do
   subject(:input_output) { described_class.new }
 
   before do

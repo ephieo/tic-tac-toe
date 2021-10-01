@@ -3,7 +3,7 @@ require 'simplecov'
 SimpleCov.start
 require_relative './../lib/game_strings'
 
-describe Game_strings do
+describe GameStrings do
   subject(:game_strings) { described_class.new }
 
   it 'returns a string asking the user to enter location number' do

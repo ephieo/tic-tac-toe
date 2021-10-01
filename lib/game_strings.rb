@@ -1,4 +1,4 @@
-class Game_strings
+class GameStrings
     def take_location_string
         'Enter the number for where you want to play your marker below [0-8]:'
     end

@@ -33,11 +33,14 @@ class Board
   end
 
   def update_board(marker, position)
-    if location[position] == position.to_s
-      location[position] = marker
-      show_board
-    else
-      puts 'That position is taken try again'
+    if !position.to_s.include?('Incorrect')
+      if location[position] == position.to_s
+        location[position] = marker
+      else
+        puts 'That position is taken try again'
+      end
+    else  
+      puts position
     end
   end
 end
