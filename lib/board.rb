@@ -1,9 +1,11 @@
+require_relative './input_output'
 class Board
   attr_reader :location
 
   # attr_accessor :location, :marker, :position
   def initialize(location)
     @location = location
+    @io = InputOutput.new
   end
 
   def show_board
@@ -33,14 +35,10 @@ class Board
   end
 
   def update_board(marker, position)
-    if !position.to_s.include?('Incorrect')
-      if location[position] == position.to_s
-        location[position] = marker
-      else
-        puts 'That position is taken try again'
-      end
-    else  
-      puts position
+    if location[position] == position.to_s
+      location[position] = marker
+    else
+      io.print('That position is taken try again')
     end
   end
 end

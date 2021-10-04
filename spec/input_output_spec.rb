@@ -22,11 +22,11 @@ describe InputOutput do
     expect(input_output.get_move).to eq(3)
   end
 
-  it 'takes a string as an output and prints it out to the terminal' do 
-    string = "Hello World !"
-      expect do 
-        input_output.print(string)
-      end.to output("Hello World !\n").to_stdout
+  it 'takes a string as an output and prints it out to the terminal' do
+    string = 'Hello World !'
+    expect do
+      input_output.print(string)
+    end.to output("Hello World !\n").to_stdout
     # expect(input_output.print(string)).to eq("Hello World !\n")
   end
 end
