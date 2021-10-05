@@ -14,7 +14,11 @@ class Board
   end
 
   def select_play(spaces)
-    spaces.even? ? true : false
+    if spaces == 9 
+      rand(8) % 2 == 0 ? true : false
+    else
+      spaces.even? ? true : false
+    end
   end
 
   def check_location(choice)
@@ -28,12 +32,14 @@ class Board
 
     result.size
   end
- #location[position] == position.to_s
+
   def update_board(marker, position)
     if check_location(position)
+      puts(position)
       location[position] = marker
     else
-      io.print('That position is taken try again')
+      puts('That position is taken try again')
+      puts(position)
     end
   end
 end

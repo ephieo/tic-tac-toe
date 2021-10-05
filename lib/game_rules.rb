@@ -11,12 +11,16 @@ class GameRules
   end
 
   def validate_input(num)
-    num < 9 && num > -1 ? true : false
+    num < 9 &&num > -1 ? true : false
   end
 
   # num =~ /[0-8]/
   def take_user_input
     io.print(str.take_location_string)
     choice = gets.chomp.to_i
+  end
+
+  def choose_marker(board)
+    board.select_play(board.has_empty_spaces) ? 'x' : 'o'
   end
 end
