@@ -36,3 +36,4 @@ class Game
     io.print(str.game_over_string)
   end
 end
+
