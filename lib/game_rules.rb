@@ -5,13 +5,13 @@ require_relative './game_strings'
 class GameRules
   attr_reader :str, :io
 
-  def initialize()
-    @str = GameStrings.new
-    @io = InputOutput.new
+  def initialize(input_output,str)
+    @str = str
+    @io = input_output
   end
 
   def validate_input(num)
-    num < 8 || num > 0 ? true : false
+    num < 9 && num > -1 ? true : false
   end
 
   # num =~ /[0-8]/

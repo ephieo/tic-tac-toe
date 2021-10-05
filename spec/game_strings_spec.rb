@@ -4,8 +4,9 @@ SimpleCov.start
 require_relative './../lib/game_strings'
 
 describe GameStrings do
+  
   subject(:game_strings) { described_class.new }
-
+  
   it 'returns a string asking the user to enter location number' do
     expect(game_strings.take_location_string).to eq('Enter a number for where you want to play your marker below [0-8]:')
   end

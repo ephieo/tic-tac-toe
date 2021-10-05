@@ -4,42 +4,35 @@ require_relative './game_strings'
 require_relative './game_rules'
 
 class Game
-  attr_reader :board
+  attr_reader :board, :input_output, :rules, :str
 
-  def initialize(board)
+  def initialize(board, input_output,rules)
     @board = board
+    @io = input_output
+    @rules = rules
+    @str = GameStrings.new
   end
 
-  def start_game(board)
-    play_game(board)
+  def start_game(board,io)
+    play_game(board,io)
   end
 
   private
 
-  def play_game(board)
-    str = GameStrings.new
-    io = InputOutput.new
-    rules = GameRules.new
+  def play_game(board,io)
 
     while board.has_empty_spaces > 0
-      board.show_board
+     io.show_board
 
       choice = rules.take_user_input
       marker = board.select_play(board.has_empty_spaces) ? 'x' : 'o'
-      puts "choice ====== #{choice}"
-      if rules.validate_input(choice) && board.check_location(choice, board)
+      if rules.validate_input(choice) && board.check_location(choice)
         board.update_board(marker, choice)
       else
         io.print('Incorrect input, please enter a string between 0-8')
-        puts 'done'
       end
-
-      # if board.check_location(choice, board)
-      #   rules.validate_input(choice) ? board.update_board(marker,choice) : return
-      # else
-      #   rules.validate_input(choice) ?  io.print('Incorrect input, please enter a string between 0-8') : io.print(str.spot_taken_string)
-      # end
     end
+    io.show_board
     io.print(str.game_over_string)
   end
 end
