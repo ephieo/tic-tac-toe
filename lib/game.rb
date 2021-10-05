@@ -26,7 +26,6 @@ class Game
 
       choice = rules.take_user_input
       io.print("prints withing game ==== #{choice}")
-      # marker = board.select_play(board.has_empty_spaces) ? 'x' : 'o'
       if rules.validate_input(choice) 
         board.update_board(rules.choose_marker(board), choice)
       else

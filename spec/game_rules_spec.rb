@@ -4,11 +4,13 @@ SimpleCov.start
 require_relative '../lib/game'
 require_relative '../lib/board'
 require_relative '../lib/game_rules'
+require_relative '../lib/game_strings'
 
 describe GameRules do
  
 board = Board.new(%w[0 1 2 3 4 5 6 7 8])
-io = InputOutput.new(board.location)
+str = GameStrings.new
+io = InputOutput.new(board.location,str)
 
   subject(:game_rules) { described_class.new(board,io) }
 
@@ -29,8 +31,8 @@ io = InputOutput.new(board.location)
         it 'checks that choose_marker() returns the correct alternating markers ' do 
             size_1 = 3
             size_2 = 9
-            expect(game_rules.choose_marker(Board.new(%w[x 1 o 3 4 5 x 7 o]))).to be(false)
-            expect(game_rules.choose_marker(Board.new(%w[0 1 2 3 4 5 6 7 8]))).to be_an(boolean)
+            expect(game_rules.choose_marker(Board.new(%w[x 1 o 3 4 5 x 7 o]))).to be_an(String)
+            expect(game_rules.choose_marker(Board.new(%w[0 1 2 3 4 5 6 7 8]))).to be_an(String)
 
         end
    end 

@@ -8,7 +8,7 @@ describe GameStrings do
   subject(:game_strings) { described_class.new }
   
   it 'returns a string asking the user to enter location number' do
-    expect(game_strings.take_location_string).to eq('Enter a number for where you want to play your marker below [0-8]:')
+    expect(game_strings.take_location_string).to eq("Enter a number for where you want to play your marker below [0-8]:\n\n")
   end
 
   it 'returns a string letting the user know that their chosen location is taken' do

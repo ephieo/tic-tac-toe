@@ -6,7 +6,7 @@ require_relative './game_strings'
 
 board = Board.new(%w[0 1 2 3 4 5 6 7 8])
 str = GameStrings.new
-input_output = InputOutput.new(board.location)
+input_output = InputOutput.new(board.location,str)
 rules = GameRules.new(input_output,str)
 game = Game.new(board,input_output,rules)
 game.start_game(board,input_output)

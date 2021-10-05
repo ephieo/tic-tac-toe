@@ -3,10 +3,12 @@ require 'simplecov'
 SimpleCov.start
 require_relative '../lib/input_output'
 require_relative '../lib/board'
+require_relative '../lib/game_strings'
 
 describe InputOutput do
   board = Board.new(%w[0 1 2 3 4 5 6 7 8])
-  subject(:input_output) { described_class.new(board.location) }
+  str = GameStrings.new
+  subject(:input_output) { described_class.new(board.location,str) }
 
   before do
     # allow($stdout).to receive(:write)
@@ -20,7 +22,7 @@ describe InputOutput do
 
     expect do
       input_output.get_move
-    end.to output("Enter the number for where you want to play your marker below [0-8]:\n\n").to_stdout
+    end.to output(str.take_location_string).to_stdout
     expect(input_output.get_move).to eq(3)
   end
 

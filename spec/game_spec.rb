@@ -10,11 +10,14 @@ require_relative '../lib/game_strings'
 describe Game do
   # let(:game) {Game.new}
    
-  board = Board.new(%w[0 1 2 3 4 5 6 7 8])
-  io = InputOutput.new(board.location)
-  str = GameStrings.new
-  rules = GameRules.new(io,str)
-  subject(:game) { described_class.new(board,io,rules)}
+  # board = Board.new(%w[0 1 2 3 4 5 6 7 8])
+  before(:each) do 
+    io = InputOutput.new(board.location)
+    str = GameStrings.new
+    rules = GameRules.new(io,str)
+    board = Board.new(%w[0 1 2 3 4 5 6 7 8])
+    subject(:game) { described_class.new(board,io,rules)}
+  end
 
   context 'testing that the player can finish the game' do
     it 'tests the game board is full' do
