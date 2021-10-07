@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class InputOutput
-   
   attr_reader :location, :str
 
-  def initialize(location,str)
+  def initialize(location, str)
     @location = location
     @str = str
   end

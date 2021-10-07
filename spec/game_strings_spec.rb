@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
 require_relative './../lib/game_strings'
 
 describe GameStrings do
-  
   subject(:game_strings) { described_class.new }
-  
+
   it 'returns a string asking the user to enter location number' do
-    expect(game_strings.take_location_string).to eq("Enter a number for where you want to play your marker below [0-8]:\n\n")
+    string = "Enter a number for where you want to play your marker below [0-8]:\n\n"
+    expect(game_strings.take_location_string).to eq(string)
   end
 
   it 'returns a string letting the user know that their chosen location is taken' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
@@ -8,15 +10,12 @@ require_relative '../lib/game_strings'
 describe InputOutput do
   board = Board.new(%w[0 1 2 3 4 5 6 7 8])
   str = GameStrings.new
-  subject(:input_output) { described_class.new(board.location,str) }
+  subject(:input_output) { described_class.new(board.location, str) }
 
   before do
-    # allow($stdout).to receive(:write)
     allow(input_output).to receive(:write)
   end
 
-  # stdin is using gets to read the input and
-  # and stdout is using write to output (write to CLI)
   it 'gets a move from a player' do
     allow(input_output).to receive(:gets).and_return('3')
 
@@ -31,10 +30,9 @@ describe InputOutput do
     expect do
       input_output.print(string)
     end.to output("Hello World !\n").to_stdout
-    # expect(input_output.print(string)).to eq("Hello World !\n")
   end
 
-  it 'draws the game board' do
+  it 'draws the game board and displays it to the terminal' do
     expect do
       input_output.show_board
     end.to output("\n 0 | 1 | 2 \n ---------\n 3 | 4 | 5 \n ---------\n 6 | 7 | 8 \n\n").to_stdout

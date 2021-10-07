@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
@@ -8,6 +10,7 @@ describe Board do
   subject(:board) { described_class.new(%w[0 1 2 3 4 5 6 7 8]) }
 
   it 'updates the board with a marker' do
+    board = Board.new(%w[0 1 2 x 4 5 6 7 8])
     marker = 'x'
     position = 0
 
@@ -16,6 +19,17 @@ describe Board do
 
     expect(update).to eq('x')
   end
+
+  it 'doesn\'t update board and gives error message' do
+    board = Board.new(%w[0 1 2 x 4 5 6 7 8])
+    marker = 'x'
+    position = 3
+    allow(board.update_board(marker, position)).to receive(:gets).and_return('3')
+    expect do
+      board.update_board(marker, position)
+    end.to output("That position is taken try again\n\n").to_stdout
+  end
+
   it 'returns true when the postion is available' do
     choice = 3
 
@@ -28,7 +42,6 @@ describe Board do
 
     expect(board.check_location(choice)).to be(false)
   end
-
 
   context 'checks for empty spaces on the board' do
     it 'returns true if there are empty spaces on the board' do
