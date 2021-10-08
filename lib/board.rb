@@ -34,11 +34,9 @@ class Board
 
   def update_board(marker, position)
     if check_location(position)
-      puts(position)
       location[position] = marker
     else
       puts("That position is taken try again\n\n")
-      # puts(position)
     end
   end
 end

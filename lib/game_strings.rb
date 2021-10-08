@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class GameStrings
   def take_location_string
     "Enter a number for where you want to play your marker below [0-8]:\n\n"

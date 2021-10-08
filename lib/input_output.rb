@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 class InputOutput
-  attr_reader :location, :str
+  attr_reader :location, :game_strings
 
-  def initialize(location, str)
+  def initialize(location, game_strings)
     @location = location
-    @str = str
+    @game_strings = game_strings
   end
 
   def get_move
-    puts str.take_location_string
+    puts game_strings.take_location_string
     gets.chomp.to_i
   end
 
