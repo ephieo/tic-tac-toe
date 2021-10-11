@@ -36,7 +36,7 @@ class Board
     if check_location(position)
       location[position] = marker
     else
-      puts("That position is taken try again\n\n")
+      io.spot_taken
     end
   end
   
