@@ -27,7 +27,6 @@ describe GameRules do
     end
 
     it 'should return false if it\'s given a string instead of a integer' do
-      
       incorrect_input_phrase = 'q'
       expect(game_rules.validate_input(incorrect_input_phrase)).to be(false)
     end

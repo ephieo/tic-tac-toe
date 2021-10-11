@@ -23,14 +23,13 @@ class GameRules
     board.select_play(board.has_empty_spaces) ? 'x' : 'o'
   end
 
-  private 
+  private
 
   def is_input_numeric?(input)
     input < 9 && input > -1 ? true : false
   end
+
   def convert_input_to_int?(input)
     /[^0-9]/ =~ input ? false : input.to_i
   end
-
-
 end

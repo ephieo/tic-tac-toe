@@ -26,13 +26,13 @@ class Game
       io.show_board
       choice = rules.take_user_input
       io.print("prints withing game ==== #{choice}")
-      
+
       if rules.validate_input(choice)
-        board.update_board(rules.choose_marker(board), choice.to_i,io)
+        board.update_board(rules.choose_marker(board), choice.to_i, io)
       else
         io.print(game_phrases.incorrect_input_phrase)
       end
-      
+
     end
     io.show_board
     io.print(game_phrases.game_over_phrase)

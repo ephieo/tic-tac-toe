@@ -23,7 +23,6 @@ class InputOutput
     " ---------\n #{location[6]} | #{location[7]} | #{location[8]} \n\n"
   end
 
-
   def spot_taken
     print(game_phrases.spot_taken_phrase)
   end

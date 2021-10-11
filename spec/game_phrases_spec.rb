@@ -14,10 +14,10 @@ describe GamePhrases do
   end
 
   it 'returns a string letting the user know that their chosen location is taken' do
-    expect(game_phrases.spot_taken_phrase).to eq('spot taken try again')
+    expect(game_phrases.spot_taken_phrase).to eq("spot taken try again\n")
   end
 
   it 'returns a string letting the user know that the game is over' do
-    expect(game_phrases.game_over_phrase).to eq('Game Over')
+    expect(game_phrases.game_over_phrase).to eq("Game Over")
   end
 end

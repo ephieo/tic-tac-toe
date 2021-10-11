@@ -8,9 +8,9 @@ class Board
     @location = location
   end
 
-  def check_wins
-    wins = [[0, 1, 2], [2, 5, 8], [6, 7, 8], [0, 3, 6], [1, 4, 7][0, 4, 8], [2, 4, 6], [3, 4, 5]]
-  end
+  # def check_wins
+  #   wins = [[0, 1, 2], [2, 5, 8], [6, 7, 8], [0, 3, 6], [1, 4, 7][0, 4, 8], [2, 4, 6], [3, 4, 5]]
+  # end
 
   def select_play(spaces)
     if spaces == 9
@@ -39,5 +39,4 @@ class Board
       io.spot_taken
     end
   end
-  
 end

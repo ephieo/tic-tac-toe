@@ -37,4 +37,10 @@ describe InputOutput do
       input_output.show_board
     end.to output("\n 0 | 1 | 2 \n ---------\n 3 | 4 | 5 \n ---------\n 6 | 7 | 8 \n\n").to_stdout
   end
+  it 'prints a phrase informing the user that the slected spot is taken' do
+    allow(input_output).to receive(:gets).and_return("spot taken try again\n")
+    expect do
+      input_output.spot_taken
+    end.to output("spot taken try again\n").to_stdout
+  end
 end
