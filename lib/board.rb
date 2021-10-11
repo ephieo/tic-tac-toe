@@ -32,11 +32,12 @@ class Board
     result.size
   end
 
-  def update_board(marker, position)
+  def update_board(marker, position, io)
     if check_location(position)
       location[position] = marker
     else
       puts("That position is taken try again\n\n")
     end
   end
+  
 end

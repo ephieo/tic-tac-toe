@@ -5,12 +5,12 @@ require 'simplecov'
 SimpleCov.start
 require_relative '../lib/input_output'
 require_relative '../lib/board'
-require_relative '../lib/game_strings'
+require_relative '../lib/game_phrases'
 
 describe InputOutput do
   board = Board.new(%w[0 1 2 3 4 5 6 7 8])
-  game_strings = GameStrings.new
-  subject(:input_output) { described_class.new(board.location, game_strings) }
+  game_phrases = GamePhrases.new
+  subject(:input_output) { described_class.new(board.location, game_phrases) }
 
   before do
     allow(input_output).to receive(:write)
@@ -21,7 +21,7 @@ describe InputOutput do
 
     expect do
       input_output.get_move
-    end.to output(game_strings.take_location_string).to_stdout
+    end.to output(game_phrases.take_location_phrase).to_stdout
     expect(input_output.get_move).to eq(3)
   end
 

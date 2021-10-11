@@ -5,8 +5,11 @@ require 'simplecov'
 SimpleCov.start
 
 require_relative '../lib/board'
+require_relative '../lib/input_output'
 
 describe Board do
+  let(:game_phrases) { GamePhrases.new }
+  let(:io) { InputOutput.new(board.location, game_phrases) }
   subject(:board) { described_class.new(%w[0 1 2 3 4 5 6 7 8]) }
 
   it 'updates the board with a marker' do
@@ -14,7 +17,7 @@ describe Board do
     marker = 'x'
     position = 0
 
-    board.update_board(marker, position)
+    board.update_board(marker, position,io)
     update = board.location[position.to_i]
 
     expect(update).to eq('x')
@@ -24,9 +27,9 @@ describe Board do
     board = Board.new(%w[0 1 2 x 4 5 6 7 8])
     marker = 'x'
     position = 3
-    allow(board.update_board(marker, position)).to receive(:gets).and_return('3')
+    allow(board.update_board(marker, position,io)).to receive(:gets).and_return('3')
     expect do
-      board.update_board(marker, position)
+      board.update_board(marker, position,io)
     end.to output("That position is taken try again\n\n").to_stdout
   end
 

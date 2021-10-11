@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 class InputOutput
-  attr_reader :location, :game_strings
+  attr_reader :location, :game_phrases
 
-  def initialize(location, game_strings)
+  def initialize(location, game_phrases)
     @location = location
-    @game_strings = game_strings
+    @game_phrases = game_phrases
   end
 
   def get_move
-    puts game_strings.take_location_string
+    puts game_phrases.take_location_phrase
     gets.chomp.to_i
   end
 
@@ -21,5 +21,10 @@ class InputOutput
     puts "\n #{location[0]} | #{location[1]} | #{location[2]} \n"\
     " ---------\n #{location[3]} | #{location[4]} | #{location[5]} \n"\
     " ---------\n #{location[6]} | #{location[7]} | #{location[8]} \n\n"
+  end
+
+
+  def spot_taken
+    print(game_phrases.spot_taken_phrase)
   end
 end

@@ -2,17 +2,17 @@
 
 require_relative './board'
 require_relative './input_output'
-require_relative './game_strings'
+require_relative './game_phrases'
 require_relative './game_rules'
 
 class Game
-  attr_reader :board, :input_output, :rules, :game_strings
+  attr_reader :board, :input_output, :rules, :game_phrases
 
   def initialize(board, input_output, rules)
     @board = board
     @io = input_output
     @rules = rules
-    @game_strings = GameStrings.new
+    @game_phrases = GamePhrases.new
   end
 
   def start_game(board, io)
@@ -24,16 +24,17 @@ class Game
   def play_game(board, io)
     while board.has_empty_spaces.positive?
       io.show_board
-
       choice = rules.take_user_input
       io.print("prints withing game ==== #{choice}")
-      if  rules.validate_input(choice)
-        board.update_board(rules.choose_marker(board), choice)
+      
+      if rules.validate_input(choice)
+        board.update_board(rules.choose_marker(board), choice.to_i,io)
       else
-        io.print('Incorrect input, please enter a string between 0-8')
+        io.print(game_phrases.incorrect_input_phrase)
       end
+      
     end
     io.show_board
-    io.print(game_strings.game_over_string)
+    io.print(game_phrases.game_over_phrase)
   end
 end
