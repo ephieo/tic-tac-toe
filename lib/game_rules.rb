@@ -20,7 +20,6 @@ class GameRules
     choice = gets.chomp
   end
 
-   
   def choose_marker(board)
     board.select_play(board.has_empty_spaces) ? 'x' : 'o'
   end

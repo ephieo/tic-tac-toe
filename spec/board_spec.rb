@@ -18,7 +18,7 @@ describe Board do
     position = 1
 
     board.update_board(marker, position, io)
-    update = board.location[position.to_i-1]
+    update = board.location[position.to_i - 1]
 
     expect(update).to eq('x')
   end
