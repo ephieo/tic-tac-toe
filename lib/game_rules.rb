@@ -30,6 +30,6 @@ class GameRules
   end
 
   def convert_input_to_int?(input)
-    /[^0-9]/ =~ input ? false : input.to_i
+    /[^0-9]/ =~ input || input == "" ? false : input.to_i
   end
 end

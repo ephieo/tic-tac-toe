@@ -10,6 +10,7 @@ describe GamePhrases do
 
   it 'returns a string asking the user to enter location number' do
     string = "Enter a number for where you want to play your marker below [0-8]:\n\n"
+
     expect(game_phrases.take_location_phrase).to eq(string)
   end
 

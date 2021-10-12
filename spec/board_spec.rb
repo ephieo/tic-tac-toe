@@ -24,10 +24,13 @@ describe Board do
   end
 
   it 'doesn\'t update board and gives error message' do
-    board = Board.new(%w[0 1 2 x 4 5 6 7 8])
     marker = 'x'
     position = 3
+
+    board = Board.new(%w[0 1 2 x 4 5 6 7 8])
+
     allow(board.update_board(marker, position, io)).to receive(:gets).and_return('3')
+
     expect do
       board.update_board(marker, position, io)
     end.to output("spot taken try again\n").to_stdout
