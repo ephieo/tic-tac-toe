@@ -10,15 +10,15 @@ require_relative '../lib/input_output'
 describe Board do
   let(:game_phrases) { GamePhrases.new }
   let(:io) { InputOutput.new(board.location, game_phrases) }
-  subject(:board) { described_class.new(%w[0 1 2 3 4 5 6 7 8]) }
+  subject(:board) { described_class.new(%w[1 2 3 4 5 6 7 8 9]) }
 
   it 'updates the board with a marker' do
-    board = Board.new(%w[0 1 2 x 4 5 6 7 8])
+    board = Board.new(%w[1 2 3 x 5 6 7 8 9])
     marker = 'x'
-    position = 0
+    position = 1
 
     board.update_board(marker, position, io)
-    update = board.location[position.to_i]
+    update = board.location[position.to_i-1]
 
     expect(update).to eq('x')
   end

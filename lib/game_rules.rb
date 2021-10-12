@@ -11,7 +11,8 @@ class GameRules
   end
 
   def validate_input(input)
-    convert_input_to_int?(input) ? is_input_numeric?(convert_input_to_int?(input)) : false
+    result = convert_input_to_int(input)
+    result ? is_input_within_scope?(result) : false
   end
 
   def take_user_input
@@ -19,17 +20,18 @@ class GameRules
     choice = gets.chomp
   end
 
+   
   def choose_marker(board)
     board.select_play(board.has_empty_spaces) ? 'x' : 'o'
   end
 
   private
 
-  def is_input_numeric?(input)
-    input < 9 && input > -1 ? true : false
+  def is_input_within_scope?(input)
+    input < 10 && input > 0 ? true : false
   end
 
-  def convert_input_to_int?(input)
+  def convert_input_to_int(input)
     /[^0-9]/ =~ input || input == "" ? false : input.to_i
   end
 end

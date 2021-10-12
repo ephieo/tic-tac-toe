@@ -9,7 +9,7 @@ require_relative '../lib/game_rules'
 require_relative '../lib/game_phrases'
 
 describe GameRules do
-  board = Board.new(%w[0 1 2 3 4 5 6 7 8])
+  board = Board.new(%w[1 2 3 4 5 6 7 8 9])
   game_phrases = GamePhrases.new
   io = InputOutput.new(board.location, game_phrases)
 
@@ -41,7 +41,7 @@ describe GameRules do
       size_2 = 9
 
       expect(game_rules.choose_marker(Board.new(%w[x 1 o 3 4 5 x 7 o]))).to be_an(String)
-      expect(game_rules.choose_marker(Board.new(%w[0 1 2 3 4 5 6 7 8]))).to be_an(String)
+      expect(game_rules.choose_marker(Board.new(%w[1 2 3 4 5 6 7 8 9]))).to be_an(String)
     end
   end
 end

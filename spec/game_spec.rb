@@ -12,7 +12,7 @@ require_relative '../lib/game_phrases'
 describe Game do
   # let(:game) {Game.new}
 
-  locations = %w[0 1 2 3 4 5 6 7 8]
+  locations = %w[1 2 3 4 5 6 7 8 9]
   let(:board) { Board.new(locations) }
   let(:game_phrases) { GamePhrases.new }
   let(:io) { InputOutput.new(board.location, game_phrases) }
@@ -30,9 +30,8 @@ describe Game do
     end
 
     it "returns 'Game Over' string when the baord is full after filling final space on board  " do
-      locations = %w[x o x 3 x o x o x]
+      locations = %w[x o 3 x x o x o x]
       board = Board.new(locations)
-
       allow(rules).to receive(:gets).and_return('3')
 
       expect do
@@ -42,8 +41,7 @@ describe Game do
   end
 
   it ' If input isn\'t within the range of 0-8 it should return Incorrect string' do
-    locations = %w[x o x 3 x o x o x]
-
+    locations = %w[x o 3 x x o x o x]
     allow(rules).to receive(:gets).and_return('777', '3')
 
     expect do

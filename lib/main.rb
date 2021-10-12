@@ -6,7 +6,7 @@ require_relative './input_output'
 require_relative './game_rules'
 require_relative './game_phrases'
 
-board = Board.new(%w[0 1 2 3 4 5 6 7 8])
+board = Board.new(%w[1 2 3 4 5 6 7 8 9])
 game_phrases = GamePhrases.new
 input_output = InputOutput.new(board.location, game_phrases)
 rules = GameRules.new(input_output, game_phrases)

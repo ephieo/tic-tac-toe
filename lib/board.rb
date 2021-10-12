@@ -21,7 +21,7 @@ class Board
   end
 
   def check_location(choice)
-    location[choice] == choice.to_s
+    location[choice - 1] == choice.to_s
   end
 
   def has_empty_spaces
@@ -34,7 +34,7 @@ class Board
 
   def update_board(marker, position, io)
     if check_location(position)
-      location[position] = marker
+      location[position - 1] = marker
     else
       io.spot_taken
     end

@@ -8,7 +8,7 @@ require_relative '../lib/board'
 require_relative '../lib/game_phrases'
 
 describe InputOutput do
-  board = Board.new(%w[0 1 2 3 4 5 6 7 8])
+  board = Board.new(%w[1 2 3 4 5 6 7 8 9])
   game_phrases = GamePhrases.new
 
   subject(:input_output) { described_class.new(board.location, game_phrases) }
@@ -38,7 +38,7 @@ describe InputOutput do
   it 'draws the game board and displays it to the terminal' do
     expect do
       input_output.show_board
-    end.to output("\n 0 | 1 | 2 \n ---------\n 3 | 4 | 5 \n ---------\n 6 | 7 | 8 \n\n").to_stdout
+    end.to output("\n 1 | 2 | 3 \n ---------\n 4 | 5 | 6 \n ---------\n 7 | 8 | 9 \n\n").to_stdout
   end
 
   it 'prints a phrase informing the user that the slected spot is taken' do
