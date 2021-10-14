@@ -12,4 +12,3 @@ input_output = InputOutput.new(board.location, game_phrases)
 rules = GameRules.new(input_output, game_phrases)
 game = Game.new(board, input_output, rules)
 game.start_game(board, input_output)
-#hello
