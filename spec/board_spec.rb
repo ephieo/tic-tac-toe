@@ -51,7 +51,7 @@ describe Board do
 
   context 'checks for empty spaces on the board' do
     it 'returns true if there are empty spaces on the board' do
-      board = Board.new(%w[0 1 2 x 4 5 6 7 8])
+      board = Board.new(%w[1 2 3 x 5 6 7 8 9])
 
       expect(board.has_empty_spaces).to be_truthy
     end
@@ -66,4 +66,8 @@ describe Board do
     expect(board.select_play(0)).to be(true)
     expect(board.select_play(5)).to be(false)
   end
+
+  it 'returns true if player X has won' do 
+    expect(board.evaluate_board).to be(true)
+  end 
 end

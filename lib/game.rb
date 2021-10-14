@@ -27,8 +27,9 @@ class Game
       choice = io.take_user_input
 
       if rules.validate_input(choice)
-        system "clear" 
+        system "clear"
         board.update_board(rules.choose_marker(board), choice.to_i, io)
+        board.evaluate_board
       else
         io.print(game_phrases.incorrect_input_phrase)
       end

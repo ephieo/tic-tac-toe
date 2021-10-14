@@ -2,15 +2,16 @@
 
 require_relative './input_output'
 class Board
-  attr_reader :location
+  attr_reader :location, :check_wins
 
   def initialize(location)
     @location = location
+    @check_wins = [[0, 1, 2], [2, 5, 8], [6, 7, 8], [0, 3, 6], [1, 4, 7],[0, 4, 8], [2, 4, 6], [3, 4, 5]]
+
   end
 
-  # def check_wins
-  #   wins = [[0, 1, 2], [2, 5, 8], [6, 7, 8], [0, 3, 6], [1, 4, 7][0, 4, 8], [2, 4, 6], [3, 4, 5]]
-  # end
+  
+  
 
   def select_play(spaces)
     if spaces == 9
@@ -38,5 +39,11 @@ class Board
     else
       io.spot_taken
     end
+  end
+
+  def evaluate_board
+    result = check_wins.map {|e| location[e[0]] == location[e[1]] && ocation[e[0]] == location[e[2]] ? true : false }
+    puts result 
+
   end
 end
