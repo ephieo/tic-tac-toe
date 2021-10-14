@@ -25,7 +25,6 @@ class Game
     while board.has_empty_spaces.positive?
       io.show_board
       choice = io.take_user_input
-      
 
       if rules.validate_input(choice)
         board.update_board(rules.choose_marker(board), choice.to_i, io)

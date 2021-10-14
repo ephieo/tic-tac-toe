@@ -19,6 +19,6 @@ describe GamePhrases do
   end
 
   it 'returns a string letting the user know that the game is over' do
-    expect(game_phrases.game_over_phrase).to eq("Game Over")
+    expect(game_phrases.game_over_phrase).to eq('Game Over')
   end
 end

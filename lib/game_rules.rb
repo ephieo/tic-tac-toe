@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './board'
 require_relative './input_output'
 require_relative './game_phrases'
@@ -15,11 +17,6 @@ class GameRules
     result ? is_input_within_scope?(result) : false
   end
 
-  # def take_user_input
-  #   io.print(game_phrases.take_location_phrase)
-  #   choice = gets.chomp
-  # end
-
   def choose_marker(board)
     board.select_play(board.has_empty_spaces) ? 'x' : 'o'
   end
@@ -27,10 +24,10 @@ class GameRules
   private
 
   def is_input_within_scope?(input)
-    input < 10 && input > 0 ? true : false
+    input < 10 && input.positive? ? true : false
   end
 
   def convert_input_to_int(input)
-    /[^0-9]/ =~ input || input == "" ? false : input.to_i
+    /[^0-9]/ =~ input || input == '' ? false : input.to_i
   end
 end
