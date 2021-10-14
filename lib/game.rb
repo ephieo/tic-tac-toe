@@ -1,35 +1,39 @@
+# frozen_string_literal: true
+
 require_relative './board'
 require_relative './input_output'
-require_relative './game_strings'
+require_relative './game_phrases'
+require_relative './game_rules'
 
 class Game
-  def start_game
-    board = setup_game
-    play_game(board)
+  attr_reader :board, :input_output, :rules, :game_phrases
+
+  def initialize(board, input_output, rules)
+    @board = board
+    @io = input_output
+    @rules = rules
+    @game_phrases = GamePhrases.new
+  end
+
+  def start_game(board, io)
+    play_game(board, io)
   end
 
   private
 
-  def setup_game
-    Board.new(%w[0 1 2 3 4 5 6 7 8])
-  end
+  def play_game(board, io)
+    while board.has_empty_spaces.positive?
+      io.show_board
+      choice = io.take_user_input
 
-  def play_game(board)
-    str = Game_strings.new() 
-    io = Input_output.new()
-    board.show_board
-    while board.has_empty_spaces > 0
-      io.print(str.take_location_string)
-      choice = gets.chomp.to_i
-      marker = board.select_play(board.has_empty_spaces) ? 'x' : 'o'
-      if board.check_location(choice, board)
-        %w[x o].include?(marker) ? board.update_board(marker, choice) : (io.print('Choose either x or o markers'))
+      if rules.validate_input(choice)
+        board.update_board(rules.choose_marker(board), choice.to_i, io)
       else
-        io.print(str.spot_taken_string)
+        io.print(game_phrases.incorrect_input_phrase)
       end
+
     end
-    io.print(str.game_over_string) 
+    io.show_board
+    io.print(game_phrases.game_over_phrase)
   end
 end
-
-#random 
