@@ -23,10 +23,10 @@ class InputOutput
     " ---------\n #{location[6]} | #{location[7]} | #{location[8]} \n\n"
   end
 
-  # def take_user_input
-  #   print(game_phrases.take_location_phrase)
-  #   choice = gets.chomp
-  # end
+  def take_user_input
+    print(game_phrases.take_location_phrase)
+    choice = gets.chomp
+  end
 
   def spot_taken
     print(game_phrases.spot_taken_phrase)

@@ -15,10 +15,10 @@ class GameRules
     result ? is_input_within_scope?(result) : false
   end
 
-  def take_user_input
-    io.print(game_phrases.take_location_phrase)
-    choice = gets.chomp
-  end
+  # def take_user_input
+  #   io.print(game_phrases.take_location_phrase)
+  #   choice = gets.chomp
+  # end
 
   def choose_marker(board)
     board.select_play(board.has_empty_spaces) ? 'x' : 'o'

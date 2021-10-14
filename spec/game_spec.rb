@@ -32,20 +32,22 @@ describe Game do
     it "returns 'Game Over' string when the baord is full after filling final space on board  " do
       locations = %w[x o 3 x x o x o x]
       board = Board.new(locations)
-      allow(rules).to receive(:gets).and_return('3')
+      io = InputOutput.new(board.location, game_phrases)
+      allow(io).to receive(:gets).and_return('3')
 
       expect do
-        game.start_game(board, InputOutput.new(board.location, game_phrases))
+        game.start_game(board, io)
       end.to output(a_string_including("Game Over\n")).to_stdout
     end
   end
 
   it ' If input isn\'t within the range of 0-8 it should return Incorrect string' do
     locations = %w[x o 3 x x o x o x]
-    allow(rules).to receive(:gets).and_return('777', '3')
+    io = InputOutput.new(board.location, game_phrases)
+    allow(io).to receive(:gets).and_return('777', '3')
 
     expect do
-      game.start_game(Board.new(locations), InputOutput.new(board.location, game_phrases))
+      game.start_game(Board.new(locations), io)
     end.to output(a_string_including("Incorrect input, please enter a string between 0-8\n")).to_stdout
   end
 end

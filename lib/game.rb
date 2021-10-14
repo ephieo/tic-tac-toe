@@ -24,8 +24,8 @@ class Game
   def play_game(board, io)
     while board.has_empty_spaces.positive?
       io.show_board
-      choice = rules.take_user_input
-      io.print("prints withing game ==== #{choice}")
+      choice = io.take_user_input
+      
 
       if rules.validate_input(choice)
         board.update_board(rules.choose_marker(board), choice.to_i, io)
