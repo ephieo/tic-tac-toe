@@ -115,6 +115,8 @@
       },
       "/Users/ephieoyedoh/Documents/CODING/ttt_game/lib/game_phrases.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           7,
@@ -215,8 +217,8 @@
           3,
           3,
           null,
-          null,
           3,
+          2,
           2,
           null,
           1,
@@ -231,6 +233,8 @@
       },
       "/Users/ephieoyedoh/Documents/CODING/ttt_game/lib/game_rules.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -246,11 +250,6 @@
           1,
           6,
           6,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           1,
@@ -382,6 +381,6 @@
         ]
       }
     },
-    "timestamp": 1634204249
+    "timestamp": 1634214781
   }
 }
