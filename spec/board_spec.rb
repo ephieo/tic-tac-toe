@@ -67,7 +67,21 @@ describe Board do
     expect(board.select_play(5)).to be(false)
   end
 
-  it 'returns true if player X has won' do 
+  it 'returns true if player X has won' do
+    board = Board.new(%w[x x x 4 5 6 7 8 9])
     expect(board.evaluate_board).to be(true)
-  end 
+  end
+  it 'returns nil if no player has won yet' do
+    board = Board.new(%w[1 2 3 x 5 6 7 8 9])
+    expect(board.evaluate_board).to eq(nil)
+  end
+
+  # it 'returns the last marker in the array showing who won' do
+  #   marker = 'o'
+  #   expect(board.choose_winner(marker)).to be('o')
+  # end
+
+  # it 'stores a marker in the play_list array' do
+  #   expect(board.choose_winner(marker)).to be_kind_of('o')
+  # end
 end

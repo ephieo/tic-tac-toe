@@ -8,20 +8,23 @@ require_relative '../lib/board'
 require_relative '../lib/input_output'
 require_relative '../lib/game_rules'
 require_relative '../lib/game_phrases'
+require_relative '../lib/player'
 
 describe Game do
   # let(:game) {Game.new}
 
   locations = %w[1 2 3 4 5 6 7 8 9]
+  let(:player_x) { player_x = Player.new('x') }
+  let(:player_o) { player_o = Player.new('o') }
   let(:board) { Board.new(locations) }
   let(:game_phrases) { GamePhrases.new }
   let(:io) { InputOutput.new(board.location, game_phrases) }
   let(:rules) { GameRules.new(io, game_phrases) }
-  subject(:game) { described_class.new(board, io, rules) }
+  subject(:game) { described_class.new(board, io, rules, player_x, player_o) }
 
   context 'testing that the player can finish the game' do
     it "if the game board is full a 'Game Over' string should be output to the terminal " do
-      locations = %w[x o x o x o x o x]
+      locations = %w[x o x x o o o x x]
       board = Board.new(locations)
 
       expect do
@@ -30,7 +33,7 @@ describe Game do
     end
 
     it "returns 'Game Over' string when the baord is full after filling final space on board  " do
-      locations = %w[x o 3 x x o x o x]
+      locations = %w[x o x x o o o x x]
       board = Board.new(locations)
       io = InputOutput.new(board.location, game_phrases)
       allow(io).to receive(:gets).and_return('3')
@@ -42,7 +45,7 @@ describe Game do
   end
 
   it ' If input isn\'t within the range of 0-8 it should return Incorrect string' do
-    locations = %w[x o 3 x x o x o x]
+    locations = %w[x o 3 x o o o x x]
     io = InputOutput.new(board.location, game_phrases)
     allow(io).to receive(:gets).and_return('777', '3')
 
