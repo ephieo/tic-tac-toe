@@ -18,6 +18,6 @@ class GamePhrases
   end
 
   def winner_output_phrase(marker)
-    "player #{marker} has won"
+    "Player #{marker} has won"
   end
 end

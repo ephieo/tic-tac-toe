@@ -50,10 +50,10 @@ describe InputOutput do
   end
   it 'prints out string that lets the players know who has won the game' do
     marker = 'x'
-    allow(input_output).to receive(:gets).and_return("player #{marker} has won")
+    allow(input_output).to receive(:gets).and_return("Player #{marker} has won")
 
     expect do
       input_output.announce_winner(marker)
-    end.to output("player x has won\n").to_stdout
+    end.to output(a_string_including("Player x has won\n")).to_stdout
   end
 end

@@ -61,6 +61,6 @@ describe Game do
 
     expect do
       game.start_game(Board.new(locations), io)
-    end.to output("player x has won\n").to_stdout
+    end.to output(a_string_including("Player x has won\n")).to_stdout
   end
 end
