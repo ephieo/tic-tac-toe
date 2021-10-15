@@ -44,7 +44,7 @@ describe Game do
     end
   end
 
-  it ' If input isn\'t within the range of 0-8 it should return Incorrect string' do
+  it " If input isn't within the range of 0-8 it should return Incorrect string" do
     locations = %w[x o 3 x o o o x x]
     io = InputOutput.new(board.location, game_phrases)
     allow(io).to receive(:gets).and_return('777', '3')
@@ -52,5 +52,15 @@ describe Game do
     expect do
       game.start_game(Board.new(locations), io)
     end.to output(a_string_including("Incorrect input, please enter a string between 0-8\n")).to_stdout
+  end
+
+  it "prints out a string lettin player x know that they've won" do
+    locations = %w[x 2 o 4 x 6 7 8 x]
+    io = InputOutput.new(board.location, game_phrases)
+    allow(io).to receive(:gets).and_return('4')
+
+    expect do
+      game.start_game(Board.new(locations), io)
+    end.to output("player x has won\n").to_stdout
   end
 end

@@ -31,4 +31,8 @@ class InputOutput
   def spot_taken
     print(game_phrases.spot_taken_phrase)
   end
+
+  def announce_winner(marker)
+    print(game_phrases.winner_output_phrase(marker))
+  end
 end

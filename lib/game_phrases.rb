@@ -16,4 +16,8 @@ class GamePhrases
   def incorrect_input_phrase
     'Incorrect input, please enter a string between 0-8'
   end
+
+  def winner_output_phrase(marker)
+    "player #{marker} has won"
+  end
 end
