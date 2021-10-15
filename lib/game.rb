@@ -31,8 +31,8 @@ class Game
 
       if rules.validate_input(choice)
         system "clear"
-        board.update_board(active_player.marker, choice.to_i, io)
         active_player == player_1 ? set_active_player(player_2) : set_active_player(player_1)
+        board.update_board(active_player.marker, choice.to_i, io)
 
       else
         io.print(game_phrases.incorrect_input_phrase)
@@ -40,7 +40,8 @@ class Game
 
     end
     if board.evaluate_board
-      io.print("player #{active_player.marker} has won")
+      io.show_board
+      io.announce_winner(active_player.marker)
     else
       io.show_board
       io.print(game_phrases.game_over_phrase)
