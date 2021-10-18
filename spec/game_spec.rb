@@ -14,8 +14,8 @@ describe Game do
   # let(:game) {Game.new}
 
   locations = %w[1 2 3 4 5 6 7 8 9]
-  let(:player_x) { player_x = Player.new('x') }
-  let(:player_o) { player_o = Player.new('o') }
+  let(:player_x) { Player.new('x') }
+  let(:player_o) { Player.new('o') }
   let(:board) { Board.new(locations) }
   let(:game_phrases) { GamePhrases.new }
   let(:io) { InputOutput.new(board.location, game_phrases) }

@@ -18,24 +18,16 @@ class Board
     ]
   end
 
-  def select_play(spaces)
-    # if spaces == 9
-    #   rand(8).even? ? true : false
-    # else
-    spaces.even? ? true : false
-    # end
-  end
+  # def select_play(spaces)
+  #   spaces.even? ? true : false
+  # end
 
   def check_location(choice)
     location[choice - 1] == choice.to_s
   end
 
-  def has_empty_spaces
-    result = location.select do |elem|
-      elem != 'x' && elem != 'o'
-    end
-
-    result.size
+  def empty_spaces
+    location.select { |elem| elem != 'x' && elem != 'o' }.size
   end
 
   def update_board(marker, position, io)
@@ -50,16 +42,4 @@ class Board
     result = check_wins.map { |e| location[e[0]] == location[e[1]] && location[e[0]] == location[e[2]] ? true : false }
     result.find { |e| e == true }
   end
-
-  # def choose_winner(marker)
-  #   play_list = []
-  #   play_list.push(marker)
-  #   # play_list
-  #   play_list[play_list.length() -1]
-  # end
-
-  # def choose_winner
-  #   # store_winner
-  #   # play_list[play_list.length() -1]
-  # end
 end

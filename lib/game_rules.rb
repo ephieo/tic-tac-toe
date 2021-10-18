@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative './board'
 require_relative './input_output'
 require_relative './game_phrases'
@@ -14,16 +12,12 @@ class GameRules
 
   def validate_input(input)
     result = convert_input_to_int(input)
-    result ? is_input_within_scope?(result) : false
-  end
-
-  def choose_marker(board)
-    board.select_play(board.has_empty_spaces) ? 'x' : 'o'
+    result ? input_within_scope?(result) : false
   end
 
   private
 
-  def is_input_within_scope?(input)
+  def input_within_scope?(input)
     input < 10 && input.positive? ? true : false
   end
 
