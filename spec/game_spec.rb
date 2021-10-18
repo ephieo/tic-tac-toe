@@ -11,8 +11,6 @@ require_relative '../lib/game_phrases'
 require_relative '../lib/player'
 
 describe Game do
-  # let(:game) {Game.new}
-
   locations = %w[1 2 3 4 5 6 7 8 9]
   let(:player_x) { Player.new('x') }
   let(:player_o) { Player.new('o') }

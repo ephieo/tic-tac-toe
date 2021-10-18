@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
@@ -53,19 +51,14 @@ describe Board do
     it 'returns true if there are empty spaces on the board' do
       board = Board.new(%w[1 2 3 x 5 6 7 8 9])
 
-      expect(board.empty_spaces).to be_truthy
+      expect(board.has_empty_spaces).to be_truthy
     end
     it 'returns false if there are no empty spaces on the board' do
       board = Board.new(%w[x o x x o x x o o])
 
-      expect(board.empty_spaces).to be(0)
+      expect(board.has_empty_spaces).to be(0)
     end
   end
-
-  # it 'chooses which player plays next' do
-  #   expect(board.select_play(0)).to be(true)
-  #   expect(board.select_play(5)).to be(false)
-  # end
 
   it 'returns true if player X has won' do
     board = Board.new(%w[x x x 4 5 6 7 8 9])

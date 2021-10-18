@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative './board'
 require_relative './input_output'
 require_relative './game_phrases'
@@ -25,7 +23,7 @@ class Game
   private
 
   def play_game(board, io)
-    while board.empty_spaces.positive? && !board.evaluate_board
+    while board.has_empty_spaces.positive? && !board.evaluate_board
       io.show_board
       choice = io.take_user_input
 

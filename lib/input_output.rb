@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class InputOutput
   attr_reader :location, :game_phrases
 

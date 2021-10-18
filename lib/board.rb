@@ -18,15 +18,11 @@ class Board
     ]
   end
 
-  # def select_play(spaces)
-  #   spaces.even? ? true : false
-  # end
-
   def check_location(choice)
     location[choice - 1] == choice.to_s
   end
 
-  def empty_spaces
+  def has_empty_spaces
     location.select { |elem| elem != 'x' && elem != 'o' }.size
   end
 
