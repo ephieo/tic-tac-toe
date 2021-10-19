@@ -33,4 +33,8 @@ class InputOutput
   def announce_winner(marker)
     print(game_phrases.winner_output_phrase(marker))
   end
+
+  def clear_terminal
+    system 'clear'
+  end
 end

@@ -28,7 +28,7 @@ class Game
       choice = io.take_user_input
 
       if rules.validate_input(choice)
-        system 'clear'
+        io.clear_terminal
         active_player == player1 ? set_active_player(player2) : set_active_player(player1)
         board.update_board(active_player.marker, choice.to_i, io)
 
