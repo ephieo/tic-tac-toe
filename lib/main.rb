@@ -11,5 +11,5 @@ player_o = Player.new('o')
 game_phrases = GamePhrases.new
 input_output = InputOutput.new(board.board_locations, game_phrases)
 rules = GameRules.new(input_output, game_phrases)
-game = Game.new(board, input_output, rules, player_x, player_o)
+game = Game.new(board, input_output, rules, game_phrases, player_x, player_o)
 game.start_game(board, input_output)

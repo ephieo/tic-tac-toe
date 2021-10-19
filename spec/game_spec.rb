@@ -18,7 +18,7 @@ describe Game do
   let(:game_phrases) { GamePhrases.new }
   let(:io) { InputOutput.new(board.board_locations, game_phrases) }
   let(:rules) { GameRules.new(io, game_phrases) }
-  subject(:game) { described_class.new(board, io, rules, player_x, player_o) }
+  subject(:game) { described_class.new(board, io, rules, game_phrases, player_x, player_o) }
 
   context 'testing that the player can finish the game' do
     it "if the game board is full a 'Game Over' string should be output to the terminal " do

@@ -6,11 +6,11 @@ require_relative './game_rules'
 class Game
   attr_accessor :board, :input_output, :rules, :game_phrases, :player1, :player2, :active_player
 
-  def initialize(board, input_output, rules, player1, player2)
+  def initialize(board, input_output, rules,game_phrases, player1, player2)
     @board = board
     @io = input_output
     @rules = rules
-    @game_phrases = GamePhrases.new
+    @game_phrases = game_phrases
     @player1 = player1
     @player2 = player2
     @active_player = player1
