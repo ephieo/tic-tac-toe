@@ -16,7 +16,7 @@ describe Game do
   let(:player_o) { Player.new('o') }
   let(:board) { Board.new(locations) }
   let(:game_phrases) { GamePhrases.new }
-  let(:io) { InputOutput.new(board.location, game_phrases) }
+  let(:io) { InputOutput.new(board.board_locations, game_phrases) }
   let(:rules) { GameRules.new(io, game_phrases) }
   subject(:game) { described_class.new(board, io, rules, player_x, player_o) }
 
@@ -26,14 +26,14 @@ describe Game do
       board = Board.new(locations)
 
       expect do
-        game.start_game(board, InputOutput.new(board.location, game_phrases))
+        game.start_game(board, InputOutput.new(board.board_locations, game_phrases))
       end.to output(a_string_including("Game Over\n")).to_stdout
     end
 
     it "returns 'Game Over' string when the baord is full after filling final space on board  " do
       locations = %w[x o x x o o o x x]
       board = Board.new(locations)
-      io = InputOutput.new(board.location, game_phrases)
+      io = InputOutput.new(board.board_locations, game_phrases)
       allow(io).to receive(:gets).and_return('3')
 
       expect do
@@ -44,7 +44,7 @@ describe Game do
 
   it " If input isn't within the range of 0-8 it should return Incorrect string" do
     locations = %w[x o 3 x o o o x x]
-    io = InputOutput.new(board.location, game_phrases)
+    io = InputOutput.new(board.board_locations, game_phrases)
     allow(io).to receive(:gets).and_return('777', '3')
 
     expect do
@@ -54,7 +54,7 @@ describe Game do
 
   it "prints out a string lettin player x know that they've won" do
     locations = %w[x 2 o 4 x 6 7 8 x]
-    io = InputOutput.new(board.location, game_phrases)
+    io = InputOutput.new(board.board_locations, game_phrases)
     allow(io).to receive(:gets).and_return('4')
 
     expect do

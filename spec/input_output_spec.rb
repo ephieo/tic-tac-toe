@@ -9,7 +9,7 @@ describe InputOutput do
   board = Board.new(%w[1 2 3 4 5 6 7 8 9])
   game_phrases = GamePhrases.new
 
-  subject(:input_output) { described_class.new(board.location, game_phrases) }
+  subject(:input_output) { described_class.new(board.board_locations, game_phrases) }
 
   before do
     allow(input_output).to receive(:write)

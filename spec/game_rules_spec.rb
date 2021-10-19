@@ -9,7 +9,7 @@ require_relative '../lib/game_phrases'
 describe GameRules do
   board = Board.new(%w[1 2 3 4 5 6 7 8 9])
   game_phrases = GamePhrases.new
-  io = InputOutput.new(board.location, game_phrases)
+  io = InputOutput.new(board.board_locations, game_phrases)
 
   subject(:game_rules) { described_class.new(board, io) }
 

@@ -1,12 +1,12 @@
-# frozen_string_literal: true
+
 
 require_relative './input_output'
 class Board
-  attr_reader :location, :check_wins
+  attr_reader :board_locations, :winning_combinations
 
-  def initialize(location)
-    @location = location
-    @check_wins = [
+  def initialize(board_locations)
+    @board_locations = board_locations
+    @winning_combinations = [
       [0, 1, 2],
       [1, 4, 7],
       [6, 7, 8],
@@ -19,23 +19,25 @@ class Board
   end
 
   def check_location(choice)
-    location[choice - 1] == choice.to_s
+    board_locations[choice - 1] == choice.to_s
   end
 
   def has_empty_spaces
-    location.select { |elem| elem != 'x' && elem != 'o' }.size
+    board_locations.select { |elem| elem != 'x' && elem != 'o' }.size
   end
 
   def update_board(marker, position, io)
     if check_location(position)
-      location[position - 1] = marker
+      board_locations[position - 1] = marker
     else
       io.spot_taken
     end
   end
 
   def evaluate_board
-    result = check_wins.map { |e| location[e[0]] == location[e[1]] && location[e[0]] == location[e[2]] ? true : false }
+    result = winning_combinations.map { |e| board_locations[e[0]] == board_locations[e[1]] && board_locations[e[0]] == board_locations[e[2]] }
+    puts result
     result.find { |e| e == true }
+     
   end
 end
