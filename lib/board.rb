@@ -36,8 +36,7 @@ class Board
 
   def evaluate_board
     result = winning_combinations.map { |e| board_locations[e[0]] == board_locations[e[1]] && board_locations[e[0]] == board_locations[e[2]] }
-    puts result
-    result.find { |e| e == true }
+    result.any?{ |e| e == true } 
      
   end
 end

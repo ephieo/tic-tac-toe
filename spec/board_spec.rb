@@ -66,6 +66,6 @@ describe Board do
   end
   it 'returns nil if no player has won yet' do
     board = Board.new(%w[1 2 3 x 5 6 7 8 9])
-    expect(board.evaluate_board).to eq(nil)
+    expect(board.evaluate_board).to eq(false)
   end
 end

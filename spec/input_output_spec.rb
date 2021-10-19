@@ -55,11 +55,4 @@ describe InputOutput do
     end.to output(a_string_including("Player x has won\n")).to_stdout
   end
 
-  it 'should clear the terminal when run' do 
-    allow(input_output).to receive(:gets).and_return("2")
-
-    expect do
-      input_output.clear_terminal
-    end.to output("").to_stdout
-  end 
 end
