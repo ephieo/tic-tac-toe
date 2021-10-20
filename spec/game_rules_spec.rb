@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
@@ -11,7 +9,7 @@ require_relative '../lib/game_phrases'
 describe GameRules do
   board = Board.new(%w[1 2 3 4 5 6 7 8 9])
   game_phrases = GamePhrases.new
-  io = InputOutput.new(board.location, game_phrases)
+  io = InputOutput.new(board.board_locations, game_phrases)
 
   subject(:game_rules) { described_class.new(board, io) }
 
@@ -32,16 +30,6 @@ describe GameRules do
       incorrect_input_phrase = 'q'
 
       expect(game_rules.validate_input(incorrect_input_phrase)).to be(false)
-    end
-  end
-
-  context 'checking that the marker selection process returns the correct value' do
-    it 'checks that choose_marker() returns the correct alternating markers ' do
-      size_1 = 3
-      size_2 = 9
-
-      expect(game_rules.choose_marker(Board.new(%w[x 1 o 3 4 5 x 7 o]))).to be_an(String)
-      expect(game_rules.choose_marker(Board.new(%w[1 2 3 4 5 6 7 8 9]))).to be_an(String)
     end
   end
 end

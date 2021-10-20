@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
@@ -11,7 +9,7 @@ describe InputOutput do
   board = Board.new(%w[1 2 3 4 5 6 7 8 9])
   game_phrases = GamePhrases.new
 
-  subject(:input_output) { described_class.new(board.location, game_phrases) }
+  subject(:input_output) { described_class.new(board.board_locations, game_phrases) }
 
   before do
     allow(input_output).to receive(:write)
@@ -47,5 +45,13 @@ describe InputOutput do
     expect do
       input_output.spot_taken
     end.to output("spot taken try again\n").to_stdout
+  end
+  it 'prints out string that lets the players know who has won the game' do
+    marker = 'x'
+    allow(input_output).to receive(:gets).and_return("Player #{marker} has won")
+
+    expect do
+      input_output.announce_winner(marker)
+    end.to output(a_string_including("Player x has won\n")).to_stdout
   end
 end

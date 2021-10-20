@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
 class InputOutput
-  attr_reader :location, :game_phrases
+  attr_reader :board_locations, :game_phrases
 
-  def initialize(location, game_phrases)
-    @location = location
+  def initialize(board_locations, game_phrases)
+    @board_locations = board_locations
     @game_phrases = game_phrases
   end
 
@@ -18,9 +16,9 @@ class InputOutput
   end
 
   def show_board
-    puts "\n #{location[0]} | #{location[1]} | #{location[2]} \n"\
-    " ---------\n #{location[3]} | #{location[4]} | #{location[5]} \n"\
-    " ---------\n #{location[6]} | #{location[7]} | #{location[8]} \n\n"
+    puts "\n #{board_locations[0]} | #{board_locations[1]} | #{board_locations[2]} \n"\
+    " ---------\n #{board_locations[3]} | #{board_locations[4]} | #{board_locations[5]} \n"\
+    " ---------\n #{board_locations[6]} | #{board_locations[7]} | #{board_locations[8]} \n\n"
   end
 
   def take_user_input
@@ -30,5 +28,13 @@ class InputOutput
 
   def spot_taken
     print(game_phrases.spot_taken_phrase)
+  end
+
+  def announce_winner(marker)
+    print(game_phrases.winner_output_phrase(marker))
+  end
+
+  def clear_terminal
+    system 'clear'
   end
 end

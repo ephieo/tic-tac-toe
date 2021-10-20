@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
@@ -9,7 +7,7 @@ require_relative '../lib/input_output'
 
 describe Board do
   let(:game_phrases) { GamePhrases.new }
-  let(:io) { InputOutput.new(board.location, game_phrases) }
+  let(:io) { InputOutput.new(board.board_locations, game_phrases) }
   subject(:board) { described_class.new(%w[1 2 3 4 5 6 7 8 9]) }
 
   it 'updates the board with a marker' do
@@ -18,7 +16,7 @@ describe Board do
     position = 1
 
     board.update_board(marker, position, io)
-    update = board.location[position.to_i - 1]
+    update = board.board_locations[position.to_i - 1]
 
     expect(update).to eq('x')
   end
@@ -51,7 +49,7 @@ describe Board do
 
   context 'checks for empty spaces on the board' do
     it 'returns true if there are empty spaces on the board' do
-      board = Board.new(%w[0 1 2 x 4 5 6 7 8])
+      board = Board.new(%w[1 2 3 x 5 6 7 8 9])
 
       expect(board.has_empty_spaces).to be_truthy
     end
@@ -62,8 +60,12 @@ describe Board do
     end
   end
 
-  it 'chooses which player plays next' do
-    expect(board.select_play(0)).to be(true)
-    expect(board.select_play(5)).to be(false)
+  it 'returns true if player X has won' do
+    board = Board.new(%w[x x x 4 5 6 7 8 9])
+    expect(board.evaluate_board).to be(true)
+  end
+  it 'returns nil if no player has won yet' do
+    board = Board.new(%w[1 2 3 x 5 6 7 8 9])
+    expect(board.evaluate_board).to eq(false)
   end
 end

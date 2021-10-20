@@ -1,18 +1,19 @@
-# frozen_string_literal: true
-
 require_relative './board'
 require_relative './input_output'
 require_relative './game_phrases'
 require_relative './game_rules'
 
 class Game
-  attr_reader :board, :input_output, :rules, :game_phrases
+  attr_accessor :board, :input_output, :rules, :game_phrases, :player1, :player2, :active_player
 
-  def initialize(board, input_output, rules)
+  def initialize(board, input_output, rules, game_phrases, player1, player2)
     @board = board
     @io = input_output
     @rules = rules
-    @game_phrases = GamePhrases.new
+    @game_phrases = game_phrases
+    @player1 = player1
+    @player2 = player2
+    @active_player = player1
   end
 
   def start_game(board, io)
@@ -22,18 +23,29 @@ class Game
   private
 
   def play_game(board, io)
-    while board.has_empty_spaces.positive?
+    while board.has_empty_spaces.positive? && !board.evaluate_board
       io.show_board
       choice = io.take_user_input
 
       if rules.validate_input(choice)
-        board.update_board(rules.choose_marker(board), choice.to_i, io)
+        io.clear_terminal
+        active_player == player1 ? set_active_player(player2) : set_active_player(player1)
+        board.update_board(active_player.marker, choice.to_i, io)
+
       else
         io.print(game_phrases.incorrect_input_phrase)
       end
 
     end
     io.show_board
-    io.print(game_phrases.game_over_phrase)
+    if board.evaluate_board
+      io.announce_winner(active_player.marker)
+    else
+      io.print(game_phrases.game_over_phrase)
+    end
+  end
+
+  def set_active_player(active_player)
+    @active_player = active_player
   end
 end
