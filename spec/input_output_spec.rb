@@ -54,5 +54,4 @@ describe InputOutput do
       input_output.announce_winner(marker)
     end.to output(a_string_including("Player x has won\n")).to_stdout
   end
-
 end

@@ -1,5 +1,3 @@
-
-
 require_relative './input_output'
 class Board
   attr_reader :board_locations, :winning_combinations
@@ -35,8 +33,8 @@ class Board
   end
 
   def evaluate_board
-    result = winning_combinations.map { |e| board_locations[e[0]] == board_locations[e[1]] && board_locations[e[0]] == board_locations[e[2]] }
-    result.any?{ |e| e == true } 
-     
+    winning_combinations.any? { |e|
+      board_locations[e[0]] == board_locations[e[1]] && board_locations[e[0]] == board_locations[e[2]]
+    }
   end
 end
