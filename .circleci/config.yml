@@ -1,4 +1,12 @@
 jobs:
-  build-macos:
-    macos:
-      xcode: 11.3.0
+  build:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - checkout
+      - ruby/install:
+          version: "2.7"
+      - run: echo "Ruby 2.7 has been installed"
+orbs:
+  ruby: circleci/ruby@x.y
+version: 2.1
