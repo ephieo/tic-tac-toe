@@ -49,7 +49,7 @@ jobs:
 orbs:
   node: circleci/node@x.y
   ruby: circleci/ruby@x.y
-version: 2.1
+version: 2.1.5
 workflows:
   build_and_test:
     jobs:
