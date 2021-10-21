@@ -12,7 +12,7 @@ class GamePhrases
   end
 
   def incorrect_input_phrase
-    'Incorrect input, please enter a string between 0-8'
+    'Incorrect input, please enter a string between 1-9'
   end
 
   def winner_output_phrase(marker)
