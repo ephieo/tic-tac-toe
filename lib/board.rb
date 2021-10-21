@@ -32,7 +32,7 @@ class Board
     end
   end
 
-  def evaluate_board
+  def check_wins?
     winning_combinations.any? { |e|
       board_locations[e[0]] == board_locations[e[1]] && board_locations[e[0]] == board_locations[e[2]]
     }

@@ -49,7 +49,7 @@ describe Game do
 
     expect do
       game.start_game(Board.new(locations), io)
-    end.to output(a_string_including("Incorrect input, please enter a string between 0-8\n")).to_stdout
+    end.to output(a_string_including("Incorrect input, please enter a string between 1-9\n")).to_stdout
   end
 
   it "prints out a string lettin player x know that they've won" do
