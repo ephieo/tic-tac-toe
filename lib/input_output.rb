@@ -37,4 +37,14 @@ class InputOutput
   def clear_terminal
     system 'clear'
   end
+
+  def last_played_move(marker,board_location)
+    print(game_phrases.last_played_move_phrase(marker,board_location))
+  end
+
+  def game_over
+    clear_terminal
+    show_board
+    print(game_phrases.game_over_phrase)
+  end
 end

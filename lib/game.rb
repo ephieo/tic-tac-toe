@@ -44,7 +44,7 @@ class Game
     if board.check_wins?
       io.announce_winner(active_player.marker)
     else
-      io.print(game_phrases.game_over_phrase)
+      io.game_over
     end
   end
 
