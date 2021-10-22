@@ -26,4 +26,10 @@ describe GamePhrases do
 
     expect(game_phrases.last_played_move_phrase(marker,board_location)).to eq("Player o just played 'o' at location 3\n")
   end
+
+  it 'returns a string letting the user choice the game mode' do
+   
+
+    expect(game_phrases.game_mode_phrase).to eq("Click 0 to play Human vs Human\n\nClick 1 to play Computer vs Human\n\n")
+  end
 end

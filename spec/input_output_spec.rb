@@ -71,4 +71,12 @@ describe InputOutput do
     end.to output(a_string_including("No one Wins :(\n\nGame Over\n")).to_stdout
 
   end 
+
+  it 'collects the users game mode choice and returns an integer' do 
+    allow(input_output).to receive(:gets).and_return('1')
+
+    expect do
+      input_output.collect_game_mode_choice
+    end.to output(a_string_including("Click 0 to play Human vs Human\n\nClick 1 to play Computer vs Human\n\n")).to_stdout
+  end
 end

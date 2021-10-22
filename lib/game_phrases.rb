@@ -22,4 +22,8 @@ class GamePhrases
   def last_played_move_phrase(marker,board_location)
     "Player #{marker} just played '#{marker}' at location #{board_location}\n"
   end
+
+  def game_mode_phrase
+    "Click 0 to play Human vs Human\n\nClick 1 to play Computer vs Human\n\n"
+  end
 end
