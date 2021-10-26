@@ -25,10 +25,11 @@ class GameMode
     end
  
     def set_up_game 
-        if choose_game_mode == 0
+        game_mode_selection = choose_game_mode
+        if game_mode_selection == 0
             # puts "You've chosen Player vs Player"
             set_game(board, input_output, rules, game_phrases, Player.new('x'),  Player.new('o'))
-        elsif choose_game_mode == 1
+        elsif game_mode_selection == 1
             # puts "You've chosen Computer vs Player"
             set_game(board,input_output, rules, game_phrases, Player.new('x'),  Computer.new('o'))
         else
