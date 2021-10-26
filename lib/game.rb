@@ -23,7 +23,9 @@ class Game
   private
 
   def play_game(board, io)
-    while board.has_empty_spaces.positive? && !board.evaluate_board
+    io.clear_terminal
+    while board.has_empty_spaces.positive? && !board.check_wins?
+
       io.show_board
       choice = io.take_user_input
 
@@ -33,15 +35,16 @@ class Game
         board.update_board(active_player.marker, choice.to_i, io)
 
       else
+        io.clear_terminal
         io.print(game_phrases.incorrect_input_phrase)
       end
 
     end
     io.show_board
-    if board.evaluate_board
+    if board.check_wins?
       io.announce_winner(active_player.marker)
     else
-      io.print(game_phrases.game_over_phrase)
+      io.game_over
     end
   end
 

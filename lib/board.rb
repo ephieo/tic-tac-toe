@@ -27,12 +27,13 @@ class Board
   def update_board(marker, position, io)
     if check_location(position)
       board_locations[position - 1] = marker
+      io.last_played_move(marker,position)
     else
       io.spot_taken
     end
   end
 
-  def evaluate_board
+  def check_wins?
     winning_combinations.any? { |e|
       board_locations[e[0]] == board_locations[e[1]] && board_locations[e[0]] == board_locations[e[2]]
     }

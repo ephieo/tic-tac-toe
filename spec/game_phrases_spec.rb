@@ -17,6 +17,13 @@ describe GamePhrases do
   end
 
   it 'returns a string letting the user know that the game is over' do
-    expect(game_phrases.game_over_phrase).to eq('Game Over')
+    expect(game_phrases.game_over_phrase).to eq("No one Wins :(\n\nGame Over\n")
+  end
+
+  it 'returns a string letting the user know what move was just played' do
+    marker = 'o'
+    board_location = 3
+
+    expect(game_phrases.last_played_move_phrase(marker,board_location)).to eq("Player o just played 'o' at location 3\n")
   end
 end

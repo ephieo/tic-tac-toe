@@ -8,14 +8,18 @@ class GamePhrases
   end
 
   def game_over_phrase
-    'Game Over'
+    "No one Wins :(\n\nGame Over\n"
   end
 
   def incorrect_input_phrase
-    'Incorrect input, please enter a string between 0-8'
+    "Incorrect input, please enter a string between 1-9"
   end
 
   def winner_output_phrase(marker)
     "Player #{marker} has won"
+  end
+
+  def last_played_move_phrase(marker,board_location)
+    "Player #{marker} just played '#{marker}' at location #{board_location}\n"
   end
 end
