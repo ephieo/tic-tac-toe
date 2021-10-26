@@ -1,6 +1,7 @@
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
+
 require_relative './../lib/game_phrases'
 
 describe GamePhrases do

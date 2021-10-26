@@ -1,6 +1,7 @@
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
+
 require_relative '../lib/input_output'
 require_relative '../lib/board'
 require_relative '../lib/game_phrases'

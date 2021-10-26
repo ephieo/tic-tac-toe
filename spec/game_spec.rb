@@ -1,8 +1,7 @@
-# frozen_string_literal: true
-
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
+
 require_relative '../lib/game'
 require_relative '../lib/board'
 require_relative '../lib/input_output'
