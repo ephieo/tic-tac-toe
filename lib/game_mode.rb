@@ -24,22 +24,23 @@ class GameMode
         input_output.collect_game_mode_choice
     end
  
-    def set_up_game 
-        game_mode_selection = choose_game_mode
+  
+    def set_up_game(game_mode_selection)
         if game_mode_selection == 0
-            # puts "You've chosen Player vs Player"
-            set_game(board, input_output, rules, game_phrases, Player.new('x'),  Player.new('o'))
+            create_game(Player.new('o'))
         elsif game_mode_selection == 1
-            # puts "You've chosen Computer vs Player"
-            set_game(board,input_output, rules, game_phrases, Player.new('x'),  Computer.new('o'))
+            create_game(Computer.new('o'))
         else
             exit
         end
         game.start_game(board, input_output)
     end
 
+    def create_game(player2)
+        set_game(board,input_output, rules, game_phrases,Player.new('x'),player2)
+    end
+
     def set_game(*game)
-        # @game = Game.new(game) 
         @game = Game.new(*game)
     end
         

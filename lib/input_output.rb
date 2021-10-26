@@ -20,6 +20,7 @@ class InputOutput
 
   def take_user_input(marker)
     print(game_phrases.take_location_phrase(marker))
+    puts "CHOMP"
     choice = gets.chomp
   end
 

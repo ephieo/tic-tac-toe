@@ -23,7 +23,8 @@ class Game
   private
 
   def play_game(board, io)
-    io.clear_terminal
+    # io.clear_terminal
+    puts "HELLO"
     while board.has_empty_spaces.positive? && !board.check_wins?
 
       io.show_board
