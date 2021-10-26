@@ -1,6 +1,6 @@
 class GamePhrases
-  def take_location_phrase
-    "Enter a number for where you want to play your marker below [0-8]:\n\n"
+  def take_location_phrase(marker)
+    "Player #{marker} enter a number for where you want to play your marker below [1-9]:\n\n"
   end
 
   def spot_taken_phrase

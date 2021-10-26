@@ -24,6 +24,12 @@ class Board
     board_locations.select { |elem| elem != 'x' && elem != 'o' }.size
   end
 
+  def get_random_play
+    free_locations = board_locations.select { |elem| elem != 'x' && elem != 'o' }
+    random_space = free_locations[rand(has_empty_spaces)]
+    # check_location(random_number) ? get_random_play : random_number.to_s 
+  end
+
   def update_board(marker, position, io)
     if check_location(position)
       board_locations[position - 1] = marker

@@ -6,10 +6,7 @@ class InputOutput
     @game_phrases = game_phrases
   end
 
-  def get_move
-    puts game_phrases.take_location_phrase
-    gets.chomp.to_i
-  end
+
 
   def print(string)
     puts string
@@ -21,8 +18,8 @@ class InputOutput
     " ---------\n #{board_locations[6]} | #{board_locations[7]} | #{board_locations[8]} \n\n"
   end
 
-  def take_user_input
-    print(game_phrases.take_location_phrase)
+  def take_user_input(marker)
+    print(game_phrases.take_location_phrase(marker))
     choice = gets.chomp
   end
 

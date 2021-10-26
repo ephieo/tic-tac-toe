@@ -42,7 +42,7 @@ describe Game do
     end
   end
 
-  it " If input isn't within the range of 0-8 it should return Incorrect string" do
+  it " If input isn't within the range of 1-9 it should return Incorrect string" do
     locations = %w[x o 3 x o o o x x]
     io = InputOutput.new(board.board_locations, game_phrases)
     allow(io).to receive(:gets).and_return('777', '3')

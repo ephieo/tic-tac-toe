@@ -4,6 +4,7 @@ SimpleCov.start
 
 require_relative '../lib/board'
 require_relative '../lib/input_output'
+require_relative '../lib/game_phrases'
 
 describe Board do
   let(:game_phrases) { GamePhrases.new }
@@ -67,5 +68,12 @@ describe Board do
   it 'returns nil if no player has won yet' do
     board = Board.new(%w[1 2 3 x 5 6 7 8 9])
     expect(board.check_wins?).to eq(false)
+  end
+
+  it 'checks the board and returns a random number to play' do 
+    board = Board.new(%w[1 2 3 x 5 6 7 8 9])
+    marker = 'o'
+    board.update_board(marker,board.get_random_play.to_i,io)
+    expect(board.has_empty_spaces).to be(7)
   end
 end

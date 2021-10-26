@@ -15,16 +15,6 @@ describe InputOutput do
     allow(input_output).to receive(:write)
   end
 
-  it 'gets a move from a player' do
-    allow(input_output).to receive(:gets).and_return('3')
-
-    expect do
-      input_output.get_move
-    end.to output(game_phrases.take_location_phrase).to_stdout
-
-    expect(input_output.get_move).to eq(3)
-  end
-
   it 'takes a string as an output and prints it out to the terminal' do
     string = 'Hello World !'
 
