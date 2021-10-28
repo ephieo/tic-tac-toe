@@ -19,7 +19,7 @@ class GamePhrases
     "Player #{marker} has won"
   end
 
-  def last_played_move_phrase(marker,board_location)
+  def last_played_move_phrase(marker, board_location)
     "Player #{marker} just played '#{marker}' at location #{board_location}\n"
   end
 

@@ -32,5 +32,23 @@ describe GameRules do
 
       expect(game_rules.validate_input(incorrect_input_phrase)).to be(false)
     end
+
+    it 'input should not be between the range of 0-1 and should return false' do
+      incorrect_input_phrase = '2'
+
+      expect(game_rules.validate_game_mode_input(incorrect_input_phrase)).to be(false)
+    end
+
+    it 'input should return false if its not an integer between 0 and 1' do
+      incorrect_input_phrase = '3'
+
+      expect(game_rules.validate_game_mode_input(incorrect_input_phrase)).to be(false)
+    end
+
+    it 'input should return true if it is an integer between 0 and 1' do
+      incorrect_input_phrase = '1'
+
+      expect(game_rules.validate_game_mode_input(incorrect_input_phrase)).to be(true)
+    end
   end
 end

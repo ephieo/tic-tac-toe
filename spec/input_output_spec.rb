@@ -46,24 +46,22 @@ describe InputOutput do
     end.to output(a_string_including("Player x has won\n")).to_stdout
   end
 
-  it 'prints out the last played moved by the last player' do 
+  it 'prints out the last played moved by the last player' do
     marker = 'o'
     board_location = 3
-    
+
     expect do
-      input_output.last_played_move(marker,board_location)
+      input_output.last_played_move(marker, board_location)
     end.to output(a_string_including("Player o just played 'o' at location 3\n")).to_stdout
   end
 
   it 'lets the player know no one wins and displays finished board' do
-        
     expect do
       input_output.game_over
     end.to output(a_string_including("No one Wins :(\n\nGame Over\n")).to_stdout
+  end
 
-  end 
-
-  it 'collects the users game mode choice and returns an integer' do 
+  it 'collects the users game mode choice and returns an integer' do
     allow(input_output).to receive(:gets).and_return('1')
 
     expect do
