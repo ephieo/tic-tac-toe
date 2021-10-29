@@ -15,7 +15,7 @@ class GameRules
     result ? input_within_scope?(result) : false
   end
 
-  def validate_game_mode_input(input)
+  def is_game_mode_input_valid?(input)
     result = convert_mode_input_to_int(input)
     result ? game_mode_input_within_scope?(result) : false
   end

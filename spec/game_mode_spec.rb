@@ -34,15 +34,15 @@ describe GameMode do
       expect(game_mode.create_game(player_o)).to be_instance_of(Game)
     end
 
-    it "takes the player as an argument to create a player vs player game" do
-      allow(game_mode.input_output).to receive(:gets).and_return("3")
-      allow(game_mode).to receive(:game).and_return(game)
+    it "creates a player vs player game" do
 
-      expect(game_mode).to receive(:create_game).with(an_instance_of(Player))
-      expect(game).to receive(:start_game)
-
-      game_mode.set_up_game(0)
+        allow(game_mode.input_output).to receive(:gets).and_return("3")
+  
+        game_mode.set_up_game(0)
+        
+        expect(game_mode.game.player1).to be_instance_of(Player)
     end
+
     it "takes the player as an argument to create a computer vs player game" do
       allow(game_mode.input_output).to receive(:gets).and_return("3")
       allow(game_mode).to receive(:game).and_return(game)
