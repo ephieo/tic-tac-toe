@@ -1,8 +1,7 @@
-# frozen_string_literal: true
-
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
+
 require_relative '../lib/game'
 require_relative '../lib/board'
 require_relative '../lib/input_output'
@@ -42,7 +41,7 @@ describe Game do
     end
   end
 
-  it " If input isn't within the range of 0-8 it should return Incorrect string" do
+  it " If input isn't within the range of 1-9 it should return Incorrect string" do
     locations = %w[x o 3 x o o o x x]
     io = InputOutput.new(board.board_locations, game_phrases)
     allow(io).to receive(:gets).and_return('777', '3')
@@ -59,6 +58,6 @@ describe Game do
 
     expect do
       game.start_game(Board.new(locations), io)
-    end.to output(a_string_including("Player x has won\n")).to_stdout
+    end.to output(a_string_including("has won\n")).to_stdout
   end
 end

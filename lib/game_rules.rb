@@ -15,13 +15,26 @@ class GameRules
     result ? input_within_scope?(result) : false
   end
 
+  def is_game_mode_input_valid?(input)
+    result = convert_mode_input_to_int(input)
+    result ? game_mode_input_within_scope?(result) : false
+  end
+
   private
 
   def input_within_scope?(input)
     input < 10 && input.positive? ? true : false
   end
 
+  def game_mode_input_within_scope?(input)
+    input < 2 || input >= 0 ? true : false
+  end
+
   def convert_input_to_int(input)
     /[^0-9]/ =~ input || input == '' ? false : input.to_i
+  end
+
+  def convert_mode_input_to_int(input)
+    /[^0-1]/ =~ input || input == '' ? false : input.to_i
   end
 end

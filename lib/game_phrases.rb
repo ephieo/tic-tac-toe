@@ -1,6 +1,6 @@
 class GamePhrases
-  def take_location_phrase
-    "Enter a number for where you want to play your marker below [0-8]:\n\n"
+  def take_location_phrase(marker)
+    "Player #{marker} enter a number for where you want to play your marker below [1-9]:\n\n"
   end
 
   def spot_taken_phrase
@@ -19,7 +19,11 @@ class GamePhrases
     "Player #{marker} has won"
   end
 
-  def last_played_move_phrase(marker,board_location)
+  def last_played_move_phrase(marker, board_location)
     "Player #{marker} just played '#{marker}' at location #{board_location}\n"
+  end
+
+  def game_mode_phrase
+    "Click 0 to play Human vs Human\n\nClick 1 to play Computer vs Human\n\n"
   end
 end

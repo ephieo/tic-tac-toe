@@ -1,6 +1,7 @@
 require 'rspec'
 require 'simplecov'
 SimpleCov.start
+
 require_relative '../lib/input_output'
 require_relative '../lib/board'
 require_relative '../lib/game_phrases'
@@ -13,16 +14,6 @@ describe InputOutput do
 
   before do
     allow(input_output).to receive(:write)
-  end
-
-  it 'gets a move from a player' do
-    allow(input_output).to receive(:gets).and_return('3')
-
-    expect do
-      input_output.get_move
-    end.to output(game_phrases.take_location_phrase).to_stdout
-
-    expect(input_output.get_move).to eq(3)
   end
 
   it 'takes a string as an output and prints it out to the terminal' do
@@ -55,20 +46,26 @@ describe InputOutput do
     end.to output(a_string_including("Player x has won\n")).to_stdout
   end
 
-  it 'prints out the last played moved by the last player' do 
+  it 'prints out the last played moved by the last player' do
     marker = 'o'
     board_location = 3
-    
+
     expect do
-      input_output.last_played_move(marker,board_location)
+      input_output.last_played_move(marker, board_location)
     end.to output(a_string_including("Player o just played 'o' at location 3\n")).to_stdout
   end
 
   it 'lets the player know no one wins and displays finished board' do
-        
     expect do
       input_output.game_over
     end.to output(a_string_including("No one Wins :(\n\nGame Over\n")).to_stdout
+  end
 
-  end 
+  it 'collects the users game mode choice and returns an integer' do
+    allow(input_output).to receive(:gets).and_return('1')
+
+    expect do
+      input_output.collect_game_mode_choice
+    end.to output(a_string_including("Click 0 to play Human vs Human\n\nClick 1 to play Computer vs Human\n\n")).to_stdout
+  end
 end

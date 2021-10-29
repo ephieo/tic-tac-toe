@@ -6,11 +6,6 @@ class InputOutput
     @game_phrases = game_phrases
   end
 
-  def get_move
-    puts game_phrases.take_location_phrase
-    gets.chomp.to_i
-  end
-
   def print(string)
     puts string
   end
@@ -21,8 +16,8 @@ class InputOutput
     " ---------\n #{board_locations[6]} | #{board_locations[7]} | #{board_locations[8]} \n\n"
   end
 
-  def take_user_input
-    print(game_phrases.take_location_phrase)
+  def take_user_input(marker)
+    print(game_phrases.take_location_phrase(marker))
     choice = gets.chomp
   end
 
@@ -35,11 +30,16 @@ class InputOutput
   end
 
   def clear_terminal
-    system 'clear'
+    system "clear"
   end
 
-  def last_played_move(marker,board_location)
-    print(game_phrases.last_played_move_phrase(marker,board_location))
+  def last_played_move(marker, board_location)
+    print(game_phrases.last_played_move_phrase(marker, board_location))
+  end
+
+  def collect_game_mode_choice
+    print(game_phrases.game_mode_phrase)
+    choice = gets.chomp
   end
 
   def game_over
