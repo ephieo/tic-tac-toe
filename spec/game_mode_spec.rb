@@ -35,12 +35,11 @@ describe GameMode do
     end
 
     it "creates a player vs player game" do
+      allow(game_mode.input_output).to receive(:gets).and_return("3")
 
-        allow(game_mode.input_output).to receive(:gets).and_return("3")
-  
-        game_mode.set_up_game(0)
-        
-        expect(game_mode.game.player1).to be_instance_of(Player)
+      game_mode.set_up_game(0)
+
+      expect(game_mode.game.player1).to be_instance_of(Player)
     end
 
     it "takes the player as an argument to create a computer vs player game" do
