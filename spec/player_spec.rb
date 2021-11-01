@@ -1,7 +1,6 @@
 require 'rspec'
 require 'simplecov'
-SimpleCov.start 
+SimpleCov.start
 
-describe Player do 
-
+describe Player do
 end
