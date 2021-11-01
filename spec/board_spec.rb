@@ -67,12 +67,12 @@ describe Board do
     end
   end
 
-  it 'returns true if player X has won' do
+  it 'returns true if human X has won' do
     board = Board.new(%w[x x x 4 5 6 7 8 9])
 
     expect(board.check_wins?).to be(true)
   end
-  it 'returns nil if no player has won yet' do
+  it 'returns nil if no human has won yet' do
     board = Board.new(%w[1 2 3 x 5 6 7 8 9])
 
     expect(board.check_wins?).to eq(false)

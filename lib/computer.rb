@@ -1,8 +1,8 @@
-class Computer
-  attr_accessor :marker, :name
-
-  def initialize(marker)
-    @marker = marker
-    @name = 'computer'
-  end
+require_relative './player'
+class Computer < Player
+  # attr_reader :name
+  
+  # def initialize(marker)
+  #   @name = 'Computer'
+  # end
 end

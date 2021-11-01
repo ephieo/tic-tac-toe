@@ -8,7 +8,7 @@ require_relative '../lib/board'
 require_relative '../lib/input_output'
 require_relative '../lib/game_rules'
 require_relative '../lib/game_phrases'
-require_relative '../lib/player'
+require_relative '../lib/human'
 require_relative '../lib/computer'
 
 RSpec.configure do |config|
@@ -34,7 +34,7 @@ describe GameMode do
       expect(game_mode.create_game(player_o)).to be_instance_of(Game)
     end
 
-    it "creates a player vs player game" do
+    it "creates a human vs human game" do
       allow(game_mode.input_output).to receive(:gets).and_return("3")
 
       game_mode.set_up_game(0)
@@ -42,7 +42,7 @@ describe GameMode do
       expect(game_mode.game.player1).to be_instance_of(Player)
     end
 
-    it "takes the player as an argument to create a computer vs player game" do
+    it "takes the human as an argument to create a computer vs human game" do
       allow(game_mode.input_output).to receive(:gets).and_return("3")
       allow(game_mode).to receive(:game).and_return(game)
 

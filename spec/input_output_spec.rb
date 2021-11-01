@@ -46,7 +46,7 @@ describe InputOutput do
     end.to output(a_string_including("Player x has won\n")).to_stdout
   end
 
-  it 'prints out the last played moved by the last player' do
+  it 'prints out the last played moved by the last human' do
     marker = 'o'
     board_location = 3
 
@@ -55,7 +55,7 @@ describe InputOutput do
     end.to output(a_string_including("Player o just played 'o' at location 3\n")).to_stdout
   end
 
-  it 'lets the player know no one wins and displays finished board' do
+  it 'lets the human know no one wins and displays finished board' do
     expect do
       input_output.game_over
     end.to output(a_string_including("No one Wins :(\n\nGame Over\n")).to_stdout

@@ -2,6 +2,7 @@ require_relative './board'
 require_relative './input_output'
 require_relative './game_phrases'
 require_relative './game_rules'
+require_relative './computer'
 
 class Game
   attr_accessor :board, :input_output, :rules, :game_phrases, :player1, :player2, :active_player, :winner
@@ -29,7 +30,7 @@ class Game
     while board.has_empty_spaces.positive? && !board.check_wins?
 
       io.show_board
-      choice = active_player.name == 'computer' ? board.get_random_play : io.take_user_input(active_player.marker)
+      choice = active_player.instance_of?(Computer) ? board.get_random_play : io.take_user_input(active_player.marker)
 
       if rules.validate_input(choice)
         io.clear_terminal

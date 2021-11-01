@@ -3,7 +3,7 @@ require_relative './board'
 require_relative './input_output'
 require_relative './game_rules'
 require_relative './game_phrases'
-require_relative './player'
+require_relative './human'
 require_relative './computer'
 
 class GameMode
