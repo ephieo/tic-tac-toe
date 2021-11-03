@@ -18,8 +18,8 @@ RSpec.configure do |config|
 end
 
 describe GameMode do
-  let(:player_o) { Human.new('o','Human') }
-  let(:player_x) { Human.new('x','Human') }
+  let(:player_o) { Human.new('o', 'Human') }
+  let(:player_x) { Human.new('x', 'Human') }
   let(:computer) { Computer.new('o') }
   let(:board) { Board.new(%w[x o 3 x o o o x x]) }
   let(:game_phrases) { GamePhrases.new }
