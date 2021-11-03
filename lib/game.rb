@@ -35,7 +35,7 @@ class Game
       if rules.validate_input(choice)
         io.clear_terminal
         board.update_board(active_player.marker, choice.to_i, io)
-        board.check_wins? ? set_winner(active_player.marker) : set_winner(nil)
+        board.check_wins? ? set_winner(active_player.name) : set_winner(nil)
         active_player == player1 ? set_active_player(player2) : set_active_player(player1)
 
       else

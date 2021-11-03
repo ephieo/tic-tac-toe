@@ -15,8 +15,8 @@ class GamePhrases
     "Incorrect input, please enter a string between 1-9"
   end
 
-  def winner_output_phrase(marker)
-    "Player #{marker} has won"
+  def winner_output_phrase(name)
+    "#{name} has won"
   end
 
   def last_played_move_phrase(marker, board_location)

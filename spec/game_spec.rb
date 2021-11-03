@@ -11,8 +11,8 @@ require_relative '../lib/human'
 
 describe Game do
   locations = %w[1 2 3 4 5 6 7 8 9]
-  let(:player_x) { Player.new('x') }
-  let(:player_o) { Player.new('o') }
+  let(:player_x) {Human.new('x','Human') }
+  let(:player_o) { Human.new('o','Human') }
   let(:board) { Board.new(locations) }
   let(:game_phrases) { GamePhrases.new }
   let(:io) { InputOutput.new(board.board_locations, game_phrases) }

@@ -18,8 +18,8 @@ RSpec.configure do |config|
 end
 
 describe GameMode do
-  let(:player_o) { Player.new('o') }
-  let(:player_x) { Player.new('x') }
+  let(:player_o) { Human.new('o','Human') }
+  let(:player_x) { Human.new('x','Human') }
   let(:computer) { Computer.new('o') }
   let(:board) { Board.new(%w[x o 3 x o o o x x]) }
   let(:game_phrases) { GamePhrases.new }
@@ -39,7 +39,7 @@ describe GameMode do
 
       game_mode.set_up_game(0)
 
-      expect(game_mode.game.player1).to be_instance_of(Player)
+      expect(game_mode.game.player1).to be_instance_of(Human)
     end
 
     it "takes the human as an argument to create a computer vs human game" do

@@ -38,12 +38,12 @@ describe InputOutput do
     end.to output("spot taken try again\n").to_stdout
   end
   it 'prints out string that lets the players know who has won the game' do
-    marker = 'x'
-    allow(input_output).to receive(:gets).and_return("Player #{marker} has won")
+    name = 'Computer'
+    allow(input_output).to receive(:gets).and_return("#{name} has won")
 
     expect do
-      input_output.announce_winner(marker)
-    end.to output(a_string_including("Player x has won\n")).to_stdout
+      input_output.announce_winner(name)
+    end.to output(a_string_including("Computer has won\n")).to_stdout
   end
 
   it 'prints out the last played moved by the last human' do

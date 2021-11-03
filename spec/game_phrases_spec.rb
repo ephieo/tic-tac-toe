@@ -33,9 +33,9 @@ describe GamePhrases do
                                                 board_location)).to eq("Player o just played 'o' at location 3\n")
   end
   it 'returns a string letting the user know who has won the game' do
-    marker = 'o'
+    name = 'Computer'
 
-    expect(game_phrases.winner_output_phrase(marker)).to eq("Player o has won")
+    expect(game_phrases.winner_output_phrase(name)).to eq("Computer has won")
   end
 
   it 'returns a string letting the user choice the game mode' do

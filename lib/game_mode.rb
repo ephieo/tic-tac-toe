@@ -19,9 +19,9 @@ class GameMode
 
   def set_up_game(game_mode_selection)
     if game_mode_selection == 0
-      create_game(Player.new('o'))
+      create_game(Human.new('o','Human o'))
     elsif game_mode_selection == 1
-      create_game(Computer.new('o'))
+      create_game(Computer.new('o','Computer'))
     else
       return
     end
@@ -33,7 +33,7 @@ class GameMode
   end
 
   def create_game(player2)
-    set_game(board, input_output, rules, game_phrases, Player.new('x'), player2)
+    set_game(board, input_output, rules, game_phrases, Human.new('x','Human x'), player2)
   end
 
   def set_game(*game)
