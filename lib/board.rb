@@ -26,7 +26,7 @@ class Board
 
   def get_random_play
     free_locations = board_locations.select { |elem| elem != 'x' && elem != 'o' }
-    random_space = free_locations[rand(has_empty_spaces)]
+    free_locations[rand(has_empty_spaces)]
   end
 
   def update_board(marker, position, io)
