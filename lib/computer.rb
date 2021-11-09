@@ -1,9 +1,14 @@
 require_relative './player'
 class Computer < Player
-  # attr_reader :name
+  attr_accessor :marker, :name, :board
 
-  # def initialize(marker)
-  #   super
-  #   @name = 'Computer'
-  # end
+  def initialize(marker, name, board)
+    @board = board
+    @marker = marker
+    @name = name
+  end
+
+  def play_game
+    board.get_random_play
+  end
 end
