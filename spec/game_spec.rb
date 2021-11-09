@@ -14,12 +14,12 @@ describe Game do
   locations = %w[1 2 3 4 5 6 7 8 9]
   let(:board) { Board.new(locations) }
   let(:game_phrases) { GamePhrases.new }
-  let(:io) { InputOutput.new(board.board_locations, game_phrases) }
-  let(:player_x) { Human.new('x', 'Human',io) }
-  let(:player_o) { Human.new('o', 'Human',io) }
-  let(:rules) { GameRules.new(io, game_phrases) }
   let(:game_mode) { GameMode.new(board) }
-  subject(:game) { described_class.new(board, io, rules, game_phrases, player_x, player_o) }
+  let(:io) { InputOutput.new(board.board_locations, game_phrases) }
+  let(:player_x) { Human.new('x', 'Human', game_mode.input_output) }
+  let(:player_o) { Human.new('o', 'Human', game_mode.input_output) }
+  let(:rules) { GameRules.new(io, game_phrases) }
+  subject(:game) { described_class.new(board, game_mode.input_output, rules, game_phrases, player_x, player_o) }
 
   context 'testing that the human can finish the game' do
     it "if the game board is full a 'Game Over' string should be output to the terminal " do
@@ -46,11 +46,10 @@ describe Game do
   it " If input isn't within the range of 1-9 it should return Incorrect string" do
     locations = %w[x o 3 x o o o x x]
     board = Board.new(locations)
-    game_mode = GameMode.new(board)
-    allow(game_mode.input_output).to receive(:gets).and_return('777', '3')
+    allow(player_o.input_output).to receive(:gets).and_return('777', '3')
 
-    expect do 
-      game.start_game(board, game_mode.input_output)
+    expect do
+      game.start_game(board, player_o.input_output)
     end.to output(a_string_including("Incorrect input, please enter a string between 1-9\n")).to_stdout
   end
 

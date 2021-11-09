@@ -30,7 +30,6 @@ class Game
     while board.has_empty_spaces.positive? && !board.check_wins?
 
       io.show_board
-      # choice = active_player.instance_of?(Computer) ? board.get_random_play : io.take_user_input(active_player.marker)
       choice = active_player.play_game
 
       if rules.validate_input(choice)
